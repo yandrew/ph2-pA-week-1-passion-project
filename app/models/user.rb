@@ -2,9 +2,10 @@ class User < ActiveRecord::Base
   has_many :prices
   has_many :cars, through: :prices
 
-  validates :username, presence: true
-  validates :username, format: { with: /\A[a-z0-9_-]{3,20}\z/}
+  validates :email, presence: true
+  validates :email, format: { with: /\A[\w]{2,}@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\z/ }
   validates :name, presence: true
+  validates :password, presence: true
 
  # users.password_hash in the database is a :string
   include BCrypt

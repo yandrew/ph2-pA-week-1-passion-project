@@ -1,3 +1,5 @@
+#TODO: -stretch goal- redirect back to previous page if you go to login or register. 
+
 #User.cars or User.prices gets cars or prices for that instance of user. 
 
 
@@ -36,7 +38,8 @@ end
 
 # goes to homepage or back to register page
 post '/register' do
-"after register"
+	User.create(name: params[:name], email: params[:email], password: params[:password])
+	redirect '/cars'
 end
 
 #logout
