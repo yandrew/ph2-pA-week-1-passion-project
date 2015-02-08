@@ -17,7 +17,7 @@ end
 post '/login' do
 	# @email = params[:email]
 	@user = user_at_email(params[:email])
-	if is_authenticated?(@user, params[:password])
+	if user_is_authenticated?(@user, params[:password])
 		session_set_current_user(@user)
 	redirect '/'
 	else
@@ -41,18 +41,19 @@ end
 
 #logout
 get '/logout' do
-	session.delete :current_user
+	session_logout
 	redirect '/'
 end
 
 get '/cars' do
-	redirect '/'
+	erb :car
 end
 
 get '/cars/:id' do |id|
 #shows page of prices for a specific car
-	
-	erb :car
+	@car = Car.find(id)
+	@id = id
+	erb :prices
 end
 
 get '/cars/:car_id/prices/new' do |car_id|

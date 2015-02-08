@@ -1,0 +1,11 @@
+<div class="price-title"><h4><%= @car.year %> <%= @car.make %></h4>
+	<h4><%= @car.model %></h4>
+</div>
+<div class="price-list">
+	
+	<% @car.prices.each do |price| %>
+	<ul>
+		<li>$<%= price.cost %></li>
+	</ul>
+	<% end %>
+</div>
