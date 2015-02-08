@@ -6,7 +6,7 @@ get '/' do
 end
 
 post '/' do 
-
+"posting"
 end
 
 get '/login' do
@@ -15,7 +15,7 @@ end
 
 #authenticates login
 post '/login' do
-
+"post login"
 end
 
 # display register page
@@ -25,7 +25,7 @@ end
 
 # goes to homepage or back to register page
 post '/register' do
-
+"after register"
 end
 
 #logout
