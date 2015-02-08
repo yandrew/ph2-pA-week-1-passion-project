@@ -18,6 +18,22 @@
   <title></title>
 </head>
 <body>
+
+  <div class="top_container">
+    <div class="logins">
+      <ul>
+        <% if logged_in? %>
+        <li>Hi <%= session[:current_user].name %></li>
+        <li><a href="/logout">Logout</a></li>
+        <% else %>
+        <li><a href="/register">Sign Up</a></li>
+        <li><a href="/login">Login</a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+
   <%= yield %>
 </body>
 </html>
