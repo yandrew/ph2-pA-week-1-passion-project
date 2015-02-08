@@ -15,12 +15,23 @@ end
 
 #authenticates login
 post '/login' do
-"post login"
+	# @email = params[:email]
+	@user = user_at_email(params[:email])
+	if is_authenticated?(@user, params[:password])
+		session_set_current_user(@user)
+	redirect '/'
+	else
+		erb :login
+	end
 end
 
 # display register page
 get '/register' do
-	erb :register
+	if logged_in?
+		redirect '/'
+	else
+		erb :register
+	end
 end
 
 # goes to homepage or back to register page
@@ -29,7 +40,7 @@ post '/register' do
 end
 
 #logout
-get '/logout' do |variable|
+get '/logout' do
 	session.delete :username
 	redirect '/'
 end
@@ -43,12 +54,20 @@ get '/cars/:id' do |id|
 end
 
 get '/cars/:car_id/prices/new' do |car_id|
-	erb :new_price
+	if logged_in?
+		erb :new_price
+	else
+		redirect '/login'
+	end
 end
 
 #shows page for editing a price. 
 get '/cars/:car_id/prices/:price_id/edit' do |car_id, price_id|
-
+	if logged_in?
+		erb :edit
+	else
+		redirect '/login'
+	end
 end
 
 #update specific price for car
