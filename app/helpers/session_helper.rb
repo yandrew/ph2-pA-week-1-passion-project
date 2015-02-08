@@ -15,14 +15,8 @@ end
 
 def session_set_current_user(user)
 		session[:current_user] = user
-	end
 end
 
-
-def session_current_user
-
-	
-end
 
 
 

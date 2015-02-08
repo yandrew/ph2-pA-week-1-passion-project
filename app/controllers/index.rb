@@ -41,11 +41,13 @@ end
 
 #logout
 get '/logout' do
-	session.delete :username
+	session.delete :current_user
 	redirect '/'
 end
 
-
+get '/cars' do
+	redirect '/'
+end
 
 get '/cars/:id' do |id|
 #shows page of prices for a specific car
