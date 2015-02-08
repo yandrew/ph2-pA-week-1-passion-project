@@ -22,3 +22,7 @@ cars.each do |key, models|
 		Car.create({ make: key, model: model, year: years.sample })
 	end
 end
+
+User.create({name: "Andrew Yan", email: "yandrew@gmail.com", username: "yandrew", password: "1"})
+
+Price.create({ cost: 200000,user_id: 1, car_id: 1})
