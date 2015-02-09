@@ -18,8 +18,16 @@ span {
 
 }
 
+input {
+	line-height: 2em;
+}
+
 div.error{}
 
 .error-message {
+	color: red;
+}
+
+span.star-marker {
 	color: red;
 }

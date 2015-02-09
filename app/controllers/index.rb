@@ -139,6 +139,7 @@ put '/cars/:car_id/prices/:price_id' do |car_id, price_id|
 	@price = Price.find(price_id)
 	@price.cost = params[:cost]
 	@price.save
+	@user = @price.user
 	
 	if @price.valid?
 		redirect "/cars/#{car_id}/prices/#{price_id}" 
@@ -148,10 +149,19 @@ put '/cars/:car_id/prices/:price_id' do |car_id, price_id|
 	end
 end
 
+get '/cars/:car_id/prices/:price_id/delete' do |car_id, price_id|
+	@price = Price.find(price_id)
+	@car_id = car_id
+	erb :delete
+end
+
 
 #deletes a price you've created in the past
 delete '/cars/:car_id/prices/:price_id' do |car_id, price_id|
-	
+	@car_id = car_id
+	@price = Price.find(price_id)
+	@price.destroy
+	redirect "/cars/#{car_id}/prices"
 end
 
 

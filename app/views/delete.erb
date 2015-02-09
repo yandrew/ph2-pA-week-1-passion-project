@@ -1,0 +1,10 @@
+<% if !!@price && @price.user == session[:current_user] %>
+  <p>Are you sure you want to delete the following price submission: <em>"$<%= @price.cost %>"</em>?</p>
+  <form action="/cars/<%= @car_id %>/prices/<%= @price.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Yes, Delete It!">
+    <a href="/cars/<%= @car_id %>/prices/<%= @price.id %>">Cancel</a>
+  </form>
+<% else %>
+  <p>Price not found / you're not authorized to delete this. </p>
+<% end %>
