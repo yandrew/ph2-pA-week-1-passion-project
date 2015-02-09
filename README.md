@@ -1,11 +1,4 @@
-> **Note**: This branch (master) contains a skeleton without any app code, perfect for creating a _new_ application or challenge. If you're looking for an example app built with this skeleton, take a look at the [example](/../..//tree/example) branch which includes basic CRUD and RSpec tests.
 
-### Purpose
-The Sinatra Skeleton:
-
-1. Provides a foundation for building challenges or creating a new Sinatra application.
-2. Demonstrates a reasonable set of practices around building Sinatra applications.
-3. Eases the transition to Rails for Dev Bootcamp students
 
 ### Quickstart
 
@@ -16,19 +9,16 @@ The Sinatra Skeleton:
 5.  `rake db:seed`
 6.  [Local host page](http://localhost:9393/)
 
-As needed, create models & migrations with the `rake` tasks:
+As needed, run these rake tasks with `bundle exec` prepended to it
 
-```
-rake generate:migration  # Create an empty migration in db/migrate, e.g., rake generate:migration NAME=create_tasks
-rake generate:model      # Create an empty model in app/models, e.g., rake generate:model NAME=User
-```
+### A website for community sharing of Car Costs
 
-### Contributing
+1. Website has authentication and authorizations with login and registration
+2. Website has a many to many relationship with Users, Prices and Cars.
+3. Website uses activerecord CRUD to create, read, update and delete prices.
+4. Website has validations and error handling.
+5. Website uses html and css.
+6. Website uses Sinatra for routing. 
 
-We would love for you to help make the skeleton more awesome, There are three ways to contribute:
 
-1. Ask for a bug fix or enhancement!
-2. Submit a pull request for a bug fix or enhancement!
-3. Code review an open pull request!
-
-Be prepared to give and receive specific, actionable, and kind feedback!
+## by Andrew Yan

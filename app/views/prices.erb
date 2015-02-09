@@ -7,10 +7,10 @@
 	<% @car.prices.each do |price| %>
 	<ul>
 		<li><a href="/cars/<%= @id %>/prices/<%= price.id %>">$<%= price.cost %></a>
-		<% if price.user == session[:current_user] %>
+			<% if price.user == session[:current_user] %>
 			<span class="star-marker">     *** submitted ***</span>
 			
-		<% end %>
+			<% end %>
 
 		</li>
 	</ul>
