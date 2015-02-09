@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :name, presence: {message: "Must have a name"}
   validates :password_hash, presence: true
 
+include BCrypt  
+
   def password
       @password ||= Password.new(password_hash) 
   end
