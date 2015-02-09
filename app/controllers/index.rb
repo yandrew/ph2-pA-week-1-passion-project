@@ -22,7 +22,7 @@ post '/login' do
 	if fields_not_blank?( @email, @password )
 		if user_is_authenticated?( @user, @password )
 			session_set_current_user(@user)
-		redirect '/cars'
+			redirect '/cars'
 		else
 			@login_error = "The email address or password you’ve entered is not valid."
 			erb :login
@@ -71,9 +71,9 @@ end
 
 get '/cars/:id/prices' do |id|
 #shows page of prices for a specific car
-	@car = Car.find(id)
-	@id = id
-	erb :prices
+@car = Car.find(id)
+@id = id
+erb :prices
 end
 
 get '/cars/:car_id/prices/new' do |car_id|

@@ -8,19 +8,6 @@ class User < ActiveRecord::Base
   validates :name, presence: {message: "Must have a name"}
   validates :password_hash, presence: true
 
-# before_validation :validates_blank_password
-# before_save
- # users.password_hash in the database is a :string
-  include BCrypt
-
-  # def pw_blank?
-  #   self.password.blank?
-  # end
-
-  # def validates_blank_password
-  #   errors.add(:password_hash, "Please enter a password") if pw_blank?
-  # end
-
   def password
       @password ||= Password.new(password_hash) 
   end
