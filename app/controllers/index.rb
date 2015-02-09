@@ -129,7 +129,8 @@ get '/cars/:car_id/prices/:price_id/edit' do |car_id, price_id|
 	@user = @price.user
 	
 	if @user != session[:current_user]
-		@errors = "You're not price"
+		@access = false
+		@errors = "You're can only edit your submissions"
 	end 
 	erb :edit
 end
