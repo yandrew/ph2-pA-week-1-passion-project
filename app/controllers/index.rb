@@ -56,7 +56,7 @@ post '/register' do
 	else
 		@user = User.create(name: @name, email: @email, password: @password)
 	
-		if @user.errors.full_messages != nil
+		if @user.errors[:email].any?
 			@error_email = @user.errors[:email][0]
 			erb :register 
 		else
