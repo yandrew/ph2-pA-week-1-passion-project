@@ -7,7 +7,7 @@
 	
 	<% @car.prices.each do |price| %>
 	<ul>
-		<li>$<%= price.cost %></li>
+		<li><a href="/cars/<%= @id %>/prices/<%= price.id %>">$<%= price.cost %></a></li>
 	</ul>
 	<% end %>
 </div>

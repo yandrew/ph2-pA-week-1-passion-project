@@ -111,12 +111,12 @@ get '/cars/:car_id/prices/:price_id' do |car_id, price_id|
 	@id = car_id
 	@price_id = price_id
 	@price = Price.find(price_id)
-
+	@user = @price.user
 	erb :price_id
 end
 
 #shows page for editing a price. s
-get '/cars/:car_id/prices/:price_id/edit' do |car_id, price_id|
+get '/cars/:car_id/prices/:price_id' do
 	if logged_in?
 		erb :edit
 	else

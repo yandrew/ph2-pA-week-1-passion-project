@@ -3,11 +3,12 @@
 </div>
 <div class="price-list">
 	
-		<p class="price-main"><%= @price.cost %></p>
+		<p class="price-main">$<%= @price.cost %></p>
 	
 		<p class="edit-price">
 			<a href="/cars/<%= @id %>/prices/<%= @price_id %>/edit">edit</a>
 		</p>
-	<% end %>
+
+		<p class="submitted_by">Submitted by <%= @user.name %></p>
 </div>
 	
