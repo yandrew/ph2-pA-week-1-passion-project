@@ -20,18 +20,23 @@
 <body>
 
   <div class="top_container">
+  <div class="title">
+    <h1><a href="/">Car Price Finder</a></h1>
+    <h4 class="subtitle">find how much people paid...</h4>
+  </div>
     <div class="logins">
-      <ul>
+      <ul class="header-list">
         <% if logged_in? %>
-        <li>Hi <%= session[:current_user].name %></li>
+        <li>Welcome <%= session[:current_user].name %></li>
         <li><a href="/logout">Logout</a></li>
         <% else %>
         <li><a href="/register">Sign Up</a></li>
         <li><a href="/login">Login</a></li>
         <% end %>
-        <li><a href="/cars">View Car Prices</a></li>
       </ul>
     </div>
+        <div class="car-price">
+          <li><a href="/cars">View Car Prices</a></li></div>
   </div>
 
 

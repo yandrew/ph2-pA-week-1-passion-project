@@ -4,12 +4,12 @@
 	<a href="/cars/<%= @id %>/prices/new">Add your own price</a>
 </div>
 <% if @user != session[:current_user] %>
-	<div class="error">
-		<p><span class="error-message"><%= @errors %></span></p>
-	</div>
+<div class="error">
+	<p><span class="error-message"><%= @errors %></span></p>
+</div>
 <% else %>
-	<div class="form-price-edit">
-		<h5>Edit price:</h3>
+<div class="form-price-add">
+	<h5>Edit price:</h3>
 		<form action="/cars/<%= @id %>/prices/<%= @price_id %>" method="post" id="edit">
 			<input type="hidden" name="_method" value="put">
 			<input class="field" type="text" name="cost" value="<%= @price.cost %>">
@@ -22,4 +22,4 @@
 		</form>
 	</div>
 	<div class="delete"><a href="/cars/<%= @id %>/prices/<%= @price_id %>/delete">Delete Your Submission</a></div>
-<% end %>
+	<% end %>

@@ -1,8 +1,8 @@
 <div class="center-frame">
 	<H4>Cars Makes</H4>
-	<ul class="car-list-links"><% Car.all.group_by(&:make).map do |make, value| %>
-		<li><%= make %></li>
-		<ul>
+	<ul class="make"><% Car.all.group_by(&:make).map do |make, value| %>
+		<li class="make-li"><%= make %></li>
+		<ul class="models">
 			<% value.map do |car| %>
 			<li><a href="/cars/<%= car.id %>/prices"><%= car.model %></a></li>
 			<% end %>
@@ -10,9 +10,3 @@
 		<% end %>
 	</ul>
 </div>
-
-
-<!-- array.group_by(&:name).map{|k, v| v.first} -->
-
-<!-- Car.all.group_by(&:make).map do |make, value| 
-	value.map {|x|x.model } -->

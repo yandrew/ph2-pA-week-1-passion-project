@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true
   validates :email, uniqueness: { message: "email has already been taken" }
-  validates :email, format: { with: /\A[\w]{2,}@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\z/, message: "Not a valid email" }
+  validates :email, format: { with: /\A[\w]{1,}\.?[\w]{1,}@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\z/, message: "Not a valid email" }
   validates :name, presence: {message: "Must have a name"}
   validates :password_hash, presence: true
 

@@ -1,6 +1,26 @@
 body {
-
+	color: rgb(75, 147, 130);
+	background-color: #5B6F72;
 }
+
+
+.logins {
+
+    position: absolute;
+    right: 20px;
+    bottom: 5px;
+}
+
+
+
+a {
+    color: rgb(242, 240, 236);
+}
+
+a:hover {
+	color: rgb(160, 33, 95);
+}
+
 
 div {
 
@@ -14,20 +34,202 @@ li {
 
 }
 
+a {
+	text-decoration: none;
+	color: rgb(242, 240, 236);
+}
+
+a :visited {
+	text-decoration: none;
+}
+
+a :hover {
+	text-decoration: none;
+}
+
 span {
 
 }
 
 input {
 	line-height: 2em;
+	margin: 8px 5px;
+	border-radius: 5px;
+    background-color: azure;
+}	
+
+input[type="submit"] {
+    width: 130px;
+    border-radius: 5px;
+    background-color: azure;
 }
 
-div.error{}
+input:hover {
+	border-style:2px solid rgb(57, 84, 168);
+}
+
+div.center-frame h4{
+	color: rgb(228, 179, 104);
+	font-size: 1.2em;
+}
+
+div.error{
+	color: red;
+	font-size: 1em;
+}
+
+div.form-price-add h5 {
+	color: rgb(232, 145, 73);
+	font-size: 1.3em;	
+	text-align: center;
+}
+
+div.home_title {
+	height: 500px;
+	
+	position: inherit;
+	text-align: center;
+}
+
+div.form-price-add {
+	text-align: center;
+}
+
+div.price-title a{
+	font-size: 1em; 
+}
+div.title {
+	position: relative;
+	display: initial;
+	text-align: center;
+}
+
+div.home_title h1 a {
+	text-align: center;
+	color: #6D91CF;
+}
+
+div.home_title h4 {
+	color: #5291A6;
+}
+
+span.signin {
+	color: rgb(216, 134, 54);
+	font-size: 1.5em;
+}
+
+span.error-message {
+	color: rgb(218, 36, 36);
+	font-size: 1em;
+}
+
+ul.header-list {
+	position: relative;
+}
+
+ul.header-list li {
+    list-style: none;
+    display: table-cell;
+    padding: 5px 15px;
+}
+
+
+
+.top_container {
+	position: relative;
+	top: 0px;
+	height: 150px;
+	width: 100%;
+	margin: 0 auto;
+	background-color: #AAA9B3;
+	display: inline-block;
+}
+
+.center-frame{
+	left: 20%;
+	position: absolute;
+}
+.car-price {
+    list-style: none;
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+}
 
 .error-message {
 	color: red;
+}
+ul.make li.make-li {
+	color: rgb(136, 7, 7);
+	list-style: none;
+	margin: 5px auto;
+	fort-size: 1.2em;
+}
+
+div.price-title a {
+	font-size: 1em;
+}
+
+.price-list {
+	text-align: left;
+	width: 40%;
+	margin: 10px auto;
+}
+
+.price-title h4 {
+	color: rgb(136, 7, 7);
+	font-size: 2em;	
+	text-align: center;
+}
+
+.price-title {
+	text-align: center;
+}
+
+.registration-form {
+	border: 2px solid white;
+	text-align: center;
+	margin: 60px auto;
+	padding: 23px;
+	width: 50%;
+	border-radius: 24px;
+	background-color: rgb(77, 120, 121);
+	position: relative;
 }
 
 span.star-marker {
 	color: red;
 }
+
+.subtitle {
+	font-size: medium
+	color: rgb(34, 123, 178)
+}
+
+.sign-in-form {
+	border: 2px solid white;
+	text-align: center;
+	margin: 50px auto;
+	padding: 23px;
+	width: 66%;
+	border-radius: 24px;
+	background-color: rgb(77, 120, 121);
+}
+
+.form-price-add {
+	border: 2px solid white;
+	text-align: center;
+	margin: 50px auto;
+	padding: 23px;
+	width: 45%;
+	border-radius: 24px;
+	background-color: rgb(77, 120, 121);
+}
+
+
+
+
+
+
+
+

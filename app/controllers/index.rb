@@ -4,11 +4,7 @@
 
 
 get '/' do
-	erb :index
-end
-
-post '/' do 
-"posting"
+	redirect '/cars'
 end
 
 get '/login' do
