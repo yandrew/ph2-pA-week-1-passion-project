@@ -3,13 +3,13 @@
 ### Quickstart
 
 1.  `bundle install`
-2.  `shotgun config.ru`
-3.  `rake db:create`
-4.  `rake db:migrate`
-5.  `rake db:seed`
+2.  `bundle exec shotgun config.ru`
+3.  `bundle exec rake db:create`
+4.  `bundle exec rake db:migrate`
+5.  `bundle exec rake db:seed`
 6.  [Local host page](http://localhost:9393/)
 
-As needed, run these rake tasks with `bundle exec` prepended to it
+These tasks might not need `bundle exec` prepended to it
 
 ### A website for community sharing of Car Costs
 
