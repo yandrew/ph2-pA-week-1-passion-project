@@ -1,5 +1,10 @@
 <div class="sign-in-form">
 	<span>Sign In</span>
+	<% if !!@login_error %>
+	<div class="error">
+		<p><span class="error-message"><%= @login_error %></span></p>
+	</div>
+	<% end %>
 	<form action="/login" method="post">
 		<input type="text" name="email" placeholder="Email">
 		<input type="password" name="password" placeholder="Password">

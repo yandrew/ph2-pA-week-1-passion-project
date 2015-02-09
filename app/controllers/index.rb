@@ -1,3 +1,5 @@
+#TODO: -stretch goal- redirect back to previous page if you go to login or register. 
+
 #User.cars or User.prices gets cars or prices for that instance of user. 
 
 
@@ -10,33 +12,56 @@ post '/' do
 end
 
 get '/login' do
+	redirect '/cars' if logged_in?
+	
 	erb :login
 end
 
 #authenticates login
 post '/login' do
-	# @email = params[:email]
+	@email = params[:email]
+	@password = params[:password]
 	@user = user_at_email(params[:email])
-	if user_is_authenticated?(@user, params[:password])
-		session_set_current_user(@user)
-	redirect '/'
+	
+	if fields_not_blank?( @email, @password )
+		if user_is_authenticated?( @user, @password )
+			session_set_current_user(@user)
+		redirect '/cars'
+		else
+			@login_error = "The email address or password you’ve entered is not valid."
+			erb :login
+		end
 	else
+
+		@login_error = "Please enter all required fields"
 		erb :login
 	end
 end
 
 # display register page
 get '/register' do
-	if logged_in?
-		redirect '/'
-	else
-		erb :register
-	end
+	@user = nil
+	redirect '/cars' if logged_in?
+	erb :register
 end
 
 # goes to homepage or back to register page
 post '/register' do
-"after register"
+	@name = params[:name]
+	@email = params[:email]
+	@password = params[:password]
+	if any_blank_fields?( @email, @password, @name)
+		@errors = "Please enter all required fields"
+		erb :register
+	else
+		@user = User.create(name: @name, email: @email, password: @password)
+		if @user.errors[:email].any?
+			@error_email = @user.errors[:email][0]
+			erb :register 
+		else
+			redirect '/login'
+		end	
+	end
 end
 
 #logout
@@ -57,11 +82,8 @@ get '/cars/:id' do |id|
 end
 
 get '/cars/:car_id/prices/new' do |car_id|
-	if logged_in?
-		erb :new_price
-	else
+	erb :new_price if logged_in?
 		redirect '/login'
-	end
 end
 
 #shows page for editing a price. 
