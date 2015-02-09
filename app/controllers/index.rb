@@ -55,16 +55,13 @@ post '/register' do
 		erb :register
 	else
 		@user = User.create(name: @name, email: @email, password: @password)
-	
 		if @user.errors[:email].any?
 			@error_email = @user.errors[:email][0]
 			erb :register 
 		else
 			redirect '/login'
 		end	
-
 	end
-	
 end
 
 #logout
