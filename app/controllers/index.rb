@@ -32,7 +32,6 @@ post '/login' do
 			erb :login
 		end
 	else
-
 		@login_error = "Please enter all required fields"
 		erb :login
 	end
@@ -74,7 +73,7 @@ get '/cars' do
 	erb :car
 end
 
-get '/cars/:id' do |id|
+get '/cars/:id/prices' do |id|
 #shows page of prices for a specific car
 	@car = Car.find(id)
 	@id = id
@@ -82,11 +81,41 @@ get '/cars/:id' do |id|
 end
 
 get '/cars/:car_id/prices/new' do |car_id|
-	erb :new_price if logged_in?
+	# erb :new_price if logged_in?
+	# redirect '/login'
+	if logged_in?
+		@car = Car.find(car_id)
+		@id = car_id
+		erb :new_price
+	else
 		redirect '/login'
+	end
 end
 
-#shows page for editing a price. 
+#creates a new price for that car. 
+post '/cars/:car_id/prices/new' do |car_id|
+	@price = Price.create({cost: params[:cost], user_id: session_current_user_id, car_id: car_id })
+	if @price.errors[:cost].any?
+		@errors = @price.errors[:cost][0]
+		@car = Car.find(car_id)
+		@id = car_id
+		erb :new_price
+	else
+		redirect "/cars/#{car_id}/prices"
+	end
+
+end
+
+get '/cars/:car_id/prices/:price_id' do |car_id, price_id|
+	@car = Car.find(car_id)
+	@id = car_id
+	@price_id = price_id
+	@price = Price.find(price_id)
+
+	erb :price_id
+end
+
+#shows page for editing a price. s
 get '/cars/:car_id/prices/:price_id/edit' do |car_id, price_id|
 	if logged_in?
 		erb :edit
