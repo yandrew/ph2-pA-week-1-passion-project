@@ -1,0 +1,16 @@
+<div class="price-title"><h4><%= @car.year %> <%= @car.make %></h4>
+	<h4><%= @car.model %></h4>
+	<a href="/cars/<%= @id %>/prices/new">Add your own price</a>
+</div>
+<div class="form-price-add">
+	
+	<form action="/cars/<%= @id %>/prices/new" method="post">
+		<input class="field" type="text" name="cost" placeholder="Price: Ex. 30000">
+		<input class="form-button" type="submit" value="Submit">
+		<% if !!@errors %>
+		<div class="error">
+			<p><span class="error-message"><%= @errors %></span></p>
+		</div>
+		<% end %>
+	</form>
+</div>

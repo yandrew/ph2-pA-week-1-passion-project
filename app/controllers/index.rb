@@ -32,7 +32,6 @@ post '/login' do
 			erb :login
 		end
 	else
-
 		@login_error = "Please enter all required fields"
 		erb :login
 	end
@@ -74,7 +73,7 @@ get '/cars' do
 	erb :car
 end
 
-get '/cars/:id' do |id|
+get '/cars/:id/prices' do |id|
 #shows page of prices for a specific car
 	@car = Car.find(id)
 	@id = id
@@ -82,27 +81,87 @@ get '/cars/:id' do |id|
 end
 
 get '/cars/:car_id/prices/new' do |car_id|
-	erb :new_price if logged_in?
-		redirect '/login'
-end
-
-#shows page for editing a price. 
-get '/cars/:car_id/prices/:price_id/edit' do |car_id, price_id|
+	# erb :new_price if logged_in?
+	# redirect '/login'
 	if logged_in?
-		erb :edit
+		@car = Car.find(car_id)
+		@id = car_id
+		erb :new_price
 	else
 		redirect '/login'
 	end
 end
 
-#update specific price for car
-put '/cars/:car_id/prices/:price_id/edit' do |car_id, price_id|
+#creates a new price for that car. 
+post '/cars/:car_id/prices/new' do |car_id|
+	redirect '/login' unless logged_in?
+	@price = Price.create({cost: params[:cost], user_id: session_current_user_id, car_id: car_id })
+	if @price.errors[:cost].any?
+		@errors = @price.errors[:cost][0]
+		@car = Car.find(car_id)
+		@id = car_id
+		erb :new_price
+	else
+		redirect "/cars/#{car_id}/prices"
+	end
 
 end
 
+#show a specific price and who submitted it.
+get '/cars/:car_id/prices/:price_id' do |car_id, price_id|
+	@car = Car.find(car_id)
+	@id = car_id
+	@price_id = price_id
+	@price = Price.find(price_id)
+	@user = @price.user
+	erb :price_id
+end
+
+
+
+#display edit page specific price for car
+get '/cars/:car_id/prices/:price_id/edit' do |car_id, price_id|
+	redirect '/login' unless logged_in?
+	@car = Car.find(car_id)
+	@id = car_id
+	@price_id = price_id
+	@price = Price.find(price_id)
+	@user = @price.user
+	
+	if @user != session[:current_user]
+		@access = false
+		@errors = "You're can only edit your submissions"
+	end 
+	erb :edit
+end
+
+put '/cars/:car_id/prices/:price_id' do |car_id, price_id|
+	@price = Price.find(price_id)
+	@price.cost = params[:cost]
+	@price.save
+	@user = @price.user
+	
+	if @price.valid?
+		redirect "/cars/#{car_id}/prices/#{price_id}" 
+	else
+		@error_cost = @price.errors[:cost][0]
+		redirect "/cars/#{car_id}/prices/#{price_id}/edit"
+	end
+end
+
+get '/cars/:car_id/prices/:price_id/delete' do |car_id, price_id|
+	@price = Price.find(price_id)
+	@car_id = car_id
+	erb :delete
+end
+
+
 #deletes a price you've created in the past
 delete '/cars/:car_id/prices/:price_id' do |car_id, price_id|
-	
+	@car_id = car_id
+	@price = Price.find(price_id)
+	@price.destroy
+	redirect "/cars/#{car_id}/prices"
 end
 
 

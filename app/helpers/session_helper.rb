@@ -19,6 +19,10 @@ def session_set_current_user(user)
 	session[:current_user] = user
 end
 
+def session_current_user_id
+	session[:current_user].id
+end
+
 def session_user_prices
 	session[:current_user].prices
 end
